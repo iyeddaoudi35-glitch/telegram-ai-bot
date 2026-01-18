@@ -36,5 +36,9 @@ async def handle_voice(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # تشغيل البوت
 app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
+
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text))
-app.add_handler(MessageHandler(filters
+app.add_handler(MessageHandler(filters.PHOTO, handle_photo))
+app.add_handler(MessageHandler(filters.VOICE, handle_voice))
+
+app.run_polling()
